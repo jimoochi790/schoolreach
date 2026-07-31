@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import SiteNav from "@/components/site-nav";
 
 export const metadata: Metadata = {
   title: {
@@ -103,20 +104,7 @@ export default function RootLayout({
             <Link href="/" className="text-lg font-semibold tracking-tight text-primary">
               NAPLAN Estimator
             </Link>
-            <nav className="flex items-center gap-4 text-sm text-muted-foreground">
-              <Link href="/oc" className="hover:text-foreground transition-colors">
-                Year 3 → OC
-              </Link>
-              <Link href="/selective" className="hover:text-foreground transition-colors">
-                Year 5 → Selective
-              </Link>
-              <Link href="/reserve-list" className="hover:text-foreground transition-colors">
-                Reserve List
-              </Link>
-              <Link href="/about" className="hover:text-foreground transition-colors">
-                About
-              </Link>
-            </nav>
+            <SiteNav />
           </div>
         </header>
         <main className="flex-1">{children}</main>
