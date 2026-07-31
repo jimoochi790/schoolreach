@@ -1,0 +1,258 @@
+[
+  {
+    "name": "Alexandria Park Community School",
+    "band2026": "C",
+    "band2025": "F"
+  },
+  {
+    "name": "Armidale Secondary College",
+    "band2026": "B",
+    "band2025": "F"
+  },
+  {
+    "name": "Auburn Girls High School",
+    "band2026": "D",
+    "band2025": "E"
+  },
+  {
+    "name": "Aurora College",
+    "band2026": null,
+    "band2025": "D"
+  },
+  {
+    "name": "Baulkham Hills High School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Blacktown Boys High School",
+    "band2026": "B",
+    "band2025": "D"
+  },
+  {
+    "name": "Blacktown Girls High School",
+    "band2026": "C",
+    "band2025": "E"
+  },
+  {
+    "name": "Bonnyrigg High School",
+    "band2026": "D",
+    "band2025": "C"
+  },
+  {
+    "name": "Caringbah High School",
+    "band2026": "E",
+    "band2025": "C",
+    "band2024": "F"
+  },
+  {
+    "name": "Chatswood High School",
+    "band2026": "D",
+    "band2025": "B",
+    "band2024": "F"
+  },
+  {
+    "name": "Elizabeth Macarthur High School",
+    "band2026": "B",
+    "band2025": "B"
+  },
+  {
+    "name": "Farrer Memorial Agricultural High School",
+    "band2026": "D",
+    "band2025": "B"
+  },
+  {
+    "name": "Fort Street High School",
+    "band2026": "D",
+    "band2024": "F"
+  },
+  {
+    "name": "Girraween High School",
+    "band2026": "C",
+    "band2025": "C",
+    "band2024": "F"
+  },
+  {
+    "name": "Gorokan High School",
+    "band2026": "B",
+    "band2025": "D",
+    "band2024": "E"
+  },
+  {
+    "name": "Gosford High School",
+    "band2026": "E",
+    "band2025": "D",
+    "band2024": "E"
+  },
+  {
+    "name": "Grafton High School",
+    "band2026": "F"
+  },
+  {
+    "name": "Granville Boys High School",
+    "band2026": "D",
+    "band2025": "C"
+  },
+  {
+    "name": "Hornsby Girls High School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "F"
+  },
+  {
+    "name": "Hurlstone Agricultural High School",
+    "band2026": "B",
+    "band2025": "B"
+  },
+  {
+    "name": "Hurlstone Agricultural High School (Female boarder)",
+    "band2026": null
+  },
+  {
+    "name": "Hurlstone Agricultural High School (Male boarder)",
+    "band2026": null
+  },
+  {
+    "name": "James Ruse Agricultural High School",
+    "band2026": "B",
+    "band2025": "F",
+    "band2024": "C"
+  },
+  {
+    "name": "Karabar High School",
+    "band2026": "F",
+    "band2025": "F"
+  },
+  {
+    "name": "Kooringal High School",
+    "band2026": "C",
+    "band2025": "F"
+  },
+  {
+    "name": "Macquarie Fields High School",
+    "band2026": "D",
+    "band2025": "E"
+  },
+  {
+    "name": "Merewether High School",
+    "band2026": "D",
+    "band2025": "F",
+    "band2024": "F"
+  },
+  {
+    "name": "Moorebank High School",
+    "band2026": "D",
+    "band2025": "E",
+    "band2024": "F"
+  },
+  {
+    "name": "Normanhurst Boys High School",
+    "band2026": "D",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "North Sydney Boys High School",
+    "band2026": "C",
+    "band2025": "B",
+    "band2024": "F"
+  },
+  {
+    "name": "North Sydney Girls High School",
+    "band2026": "C",
+    "band2025": "B",
+    "band2024": "F"
+  },
+  {
+    "name": "Northern Beaches Secondary College, Manly campus",
+    "band2026": "D",
+    "band2025": "F",
+    "band2024": "D"
+  },
+  {
+    "name": "Parramatta High School",
+    "band2026": "C",
+    "band2025": "F",
+    "band2024": "F"
+  },
+  {
+    "name": "Peel High School",
+    "band2026": "F",
+    "band2025": "F"
+  },
+  {
+    "name": "Penrith High School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "F"
+  },
+  {
+    "name": "Prairiewood High School",
+    "band2026": "C",
+    "band2025": "B"
+  },
+  {
+    "name": "Richmond High School",
+    "band2026": "B"
+  },
+  {
+    "name": "Rose Bay Secondary College",
+    "band2026": "D"
+  },
+  {
+    "name": "Ryde Secondary College",
+    "band2026": "B",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "Sefton High School",
+    "band2026": "D",
+    "band2025": "F"
+  },
+  {
+    "name": "Smiths Hill High School",
+    "band2026": "D",
+    "band2025": "E"
+  },
+  {
+    "name": "St George Girls High School",
+    "band2026": "C",
+    "band2025": "E",
+    "band2024": "F"
+  },
+  {
+    "name": "Sydney Boys High School",
+    "band2026": "D",
+    "band2025": "E",
+    "band2024": "F"
+  },
+  {
+    "name": "Sydney Girls High School",
+    "band2026": "D",
+    "band2025": "E",
+    "band2024": "F"
+  },
+  {
+    "name": "Sydney Secondary College, Balmain Campus",
+    "band2026": "C",
+    "band2025": "D",
+    "band2024": "F"
+  },
+  {
+    "name": "Sydney Secondary College, Leichhardt Campus",
+    "band2026": "E",
+    "band2025": "D"
+  },
+  {
+    "name": "Sydney Technical High School",
+    "band2026": "E",
+    "band2025": "E",
+    "band2024": "F"
+  },
+  {
+    "name": "Tempe High School",
+    "band2026": "D"
+  }
+]

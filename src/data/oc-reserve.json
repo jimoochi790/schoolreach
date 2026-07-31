@@ -1,0 +1,508 @@
+[
+  {
+    "name": "Alexandria Park Community School",
+    "band2026": "E",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "Alstonville Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "C"
+  },
+  {
+    "name": "Armidale City Public School",
+    "band2026": "C",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Artarmon Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Ashfield Public School",
+    "band2026": "C",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "Aurora College",
+    "band2026": null
+  },
+  {
+    "name": "Balgowlah Heights Public School",
+    "band2026": "B",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "Balmain Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Bathurst West Public School",
+    "band2026": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Beecroft Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Biraban Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Blacktown South Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "C"
+  },
+  {
+    "name": "Blacktown West Public School",
+    "band2026": "B",
+    "band2025": "E"
+  },
+  {
+    "name": "Blaxcell Street Public School",
+    "band2026": "B",
+    "band2025": "D",
+    "band2024": "E"
+  },
+  {
+    "name": "Bradbury Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Brookvale Public School",
+    "band2026": "B",
+    "band2025": "C"
+  },
+  {
+    "name": "Camden South Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Caringbah North Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Casula Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "D"
+  },
+  {
+    "name": "Cessnock West Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Chatswood Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Colyton Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Coonabarabran Public School",
+    "band2026": "A",
+    "band2024": "-"
+  },
+  {
+    "name": "Cudgegong Valley Public School",
+    "band2026": "B",
+    "band2025": "A",
+    "band2024": "-"
+  },
+  {
+    "name": "Doonside Public School",
+    "band2026": "D"
+  },
+  {
+    "name": "Dubbo West Public School",
+    "band2026": "E",
+    "band2024": "-"
+  },
+  {
+    "name": "Dural Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Earlwood Public School",
+    "band2026": "B",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "Ermington Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "C"
+  },
+  {
+    "name": "Georges Hall Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Glenbrook Public School",
+    "band2026": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Goonellabah Public School",
+    "band2026": "A",
+    "band2024": "-"
+  },
+  {
+    "name": "Gosford Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Goulburn West Public School",
+    "band2026": "C",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Greenacre Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "C"
+  },
+  {
+    "name": "Greystanes Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Guilford West Public School",
+    "band2026": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Harrington Street Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Holsworthy Public School",
+    "band2026": "E",
+    "band2025": "C",
+    "band2024": "B"
+  },
+  {
+    "name": "Hurstville Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Illaroo Road Public School",
+    "band2026": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Ironbark Ridge Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Jewells Primary School",
+    "band2026": "E",
+    "band2025": "C",
+    "band2024": "D"
+  },
+  {
+    "name": "Kingswood Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Leumeah Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Lindfield East Public School",
+    "band2026": "B",
+    "band2025": "B"
+  },
+  {
+    "name": "Lithgow Public School",
+    "band2026": "E",
+    "band2024": "-"
+  },
+  {
+    "name": "Maroubra Junction Public School",
+    "band2026": "B",
+    "band2025": "E"
+  },
+  {
+    "name": "Maryland Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Matthew Pearce Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Miranda Public School",
+    "band2026": "E",
+    "band2025": "B"
+  },
+  {
+    "name": "Mona Vale Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Moree Public School",
+    "band2026": "A",
+    "band2024": "B"
+  },
+  {
+    "name": "Moss Vale Public School",
+    "band2026": "B",
+    "band2025": "D"
+  },
+  {
+    "name": "Neutral Bay Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "C"
+  },
+  {
+    "name": "New Lambton Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Newbridge Heights Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "North Rocks Public School",
+    "band2026": "D",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Penrith Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Picnic Point Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "-"
+  },
+  {
+    "name": "Port Macquarie Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "-"
+  },
+  {
+    "name": "Quakers Hill Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "D"
+  },
+  {
+    "name": "Queanbeyan South Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Richmond Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Rutherford Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Ryde Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Smithfield Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Soldiers Point Public School",
+    "band2026": "B",
+    "band2025": "C",
+    "band2024": "E"
+  },
+  {
+    "name": "South Grafton Public School",
+    "band2026": "A",
+    "band2025": "B"
+  },
+  {
+    "name": "St Andrews Public School",
+    "band2026": "C",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "St Clair Public School",
+    "band2026": "B",
+    "band2025": "B"
+  },
+  {
+    "name": "St Johns Park Public School",
+    "band2026": "E",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Sturt Public School",
+    "band2026": "E",
+    "band2025": "C",
+    "band2024": "B"
+  },
+  {
+    "name": "Summer Hill Public School",
+    "band2026": "D",
+    "band2025": "E",
+    "band2024": "E"
+  },
+  {
+    "name": "Sutherland Public School",
+    "band2026": "E",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Tahmoor Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "C"
+  },
+  {
+    "name": "Tamworth Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Tamworth South Public School",
+    "band2026": "E",
+    "band2025": "E",
+    "band2024": "-"
+  },
+  {
+    "name": "Tighes Hill Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Toongabbie Public School",
+    "band2026": "B",
+    "band2025": "C",
+    "band2024": "-"
+  },
+  {
+    "name": "Toormina Public School",
+    "band2026": "A",
+    "band2025": "C"
+  },
+  {
+    "name": "Wahroonga Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Waitara Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Wentworth Falls Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "B"
+  },
+  {
+    "name": "Wilkins Public School",
+    "band2026": "C",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Wollongong Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  },
+  {
+    "name": "Woollahra Public School",
+    "band2026": "B",
+    "band2025": "E",
+    "band2024": "B"
+  },
+  {
+    "name": "Wyong Public School",
+    "band2026": "B",
+    "band2025": "B",
+    "band2024": "E"
+  }
+]

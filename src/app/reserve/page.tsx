@@ -1,0 +1,376 @@
+'use client';
+
+import { useState, useMemo } from 'react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Separator } from '@/components/ui/separator';
+import {
+  getReserveSchools,
+  estimateReserveChance,
+  getProbabilityStyle,
+  BAND_OPTIONS,
+} from '@/lib/reserve';
+import type { ReserveBand, ReserveEstimate } from '@/lib/reserve';
+
+const TIER_COLORS: Record<string, string> = {
+  'A': 'border-l-green-600 bg-green-50 dark:bg-green-950/20',
+  'B': 'border-l-green-500 bg-green-50/60 dark:bg-green-950/15',
+  'C': 'border-l-yellow-500 bg-yellow-50 dark:bg-yellow-950/20',
+  'D': 'border-l-orange-500 bg-orange-50 dark:bg-orange-950/20',
+  'E': 'border-l-red-500 bg-red-50 dark:bg-red-950/20',
+  'F': 'border-l-red-700 bg-red-50/60 dark:bg-red-950/15',
+};
+
+export default function ReservePage() {
+  const [schoolType, setSchoolType] = useState<'selective' | 'oc'>('selective');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
+  const [yourBand, setYourBand] = useState<ReserveBand | null>(null);
+  const [showResults, setShowResults] = useState(false);
+
+  const schools = useMemo(() => getReserveSchools(schoolType), [schoolType]);
+
+  const filteredSchools = useMemo(() => {
+    if (!searchQuery.trim()) return schools;
+    const q = searchQuery.toLowerCase();
+    return schools.filter(s => s.name.toLowerCase().includes(q));
+  }, [schools, searchQuery]);
+
+  const estimate = useMemo(() => {
+    if (!selectedSchool || !yourBand) return null;
+    const school = schools.find(s => s.name === selectedSchool);
+    if (!school) return null;
+    return estimateReserveChance(school, yourBand);
+  }, [selectedSchool, yourBand, schools]);
+
+  const handleSchoolSelect = (name: string) => {
+    setSelectedSchool(name);
+    setSearchQuery(name);
+  };
+
+  const handleCheck = () => {
+    if (selectedSchool && yourBand) {
+      setShowResults(true);
+    }
+  };
+
+  const handleReset = () => {
+    setSelectedSchool(null);
+    setYourBand(null);
+    setSearchQuery('');
+    setShowResults(false);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8 space-y-8">
+      {/* Header */}
+      <section className="text-center space-y-4 pt-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-sm font-medium">
+          <span className="w-2 h-2 rounded-full bg-primary" />
+          Reserve List Tool
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance">
+          Reserve List Chance Estimator
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-xl mx-auto text-balance">
+          Find out the likelihood of your child receiving an offer from the
+          OC or Selective school reserve list, based on historical data.
+        </p>
+      </section>
+
+      {/* Input Card */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Check your chances</CardTitle>
+          <CardDescription>
+            Select the school type, find your school, and choose your child&apos;s reserve band.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          {/* School type toggle */}
+          <div>
+            <label className="text-sm font-medium mb-2 block">School type</label>
+            <div className="flex gap-2">
+              <Button
+                variant={schoolType === 'selective' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => { setSchoolType('selective'); setSelectedSchool(null); setSearchQuery(''); setShowResults(false); }}
+              >
+                Selective (Year 7)
+              </Button>
+              <Button
+                variant={schoolType === 'oc' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => { setSchoolType('oc'); setSelectedSchool(null); setSearchQuery(''); setShowResults(false); }}
+              >
+                OC (Year 5)
+              </Button>
+            </div>
+          </div>
+
+          {/* School search */}
+          <div>
+            <label className="text-sm font-medium mb-2 block">Search for your school</label>
+            <div className="relative">
+              <Input
+                type="text"
+                placeholder={`Search ${schoolType === 'selective' ? 'selective' : 'OC'} schools...`}
+                value={searchQuery}
+                onChange={e => {
+                  setSearchQuery(e.target.value);
+                  setSelectedSchool(null);
+                  setShowResults(false);
+                }}
+                className="pl-8"
+              />
+              <svg
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </div>
+            {searchQuery.trim() && !selectedSchool && (
+              <div className="mt-2 border rounded-lg max-h-60 overflow-y-auto">
+                {filteredSchools.length > 0 ? (
+                  filteredSchools.map(school => (
+                    <button
+                      key={school.name}
+                      onClick={() => handleSchoolSelect(school.name)}
+                      className="w-full text-left px-3 py-2 text-sm hover:bg-muted transition-colors border-b last:border-b-0"
+                    >
+                      {school.name}
+                    </button>
+                  ))
+                ) : (
+                  <div className="px-3 py-2 text-sm text-muted-foreground">
+                    No schools found
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Band selector */}
+          {selectedSchool && (
+            <div>
+              <label className="text-sm font-medium mb-2 block">
+                Your child&apos;s reserve band
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {BAND_OPTIONS.map(opt => (
+                  <button
+                    key={opt.value}
+                    onClick={() => { setYourBand(opt.value); setShowResults(false); }}
+                    className={`text-left px-3 py-2 rounded-lg border text-sm transition-colors ${
+                      yourBand === opt.value
+                        ? 'border-primary bg-primary/10 text-primary font-medium'
+                        : 'border-border hover:bg-muted'
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Check button */}
+          {selectedSchool && yourBand && (
+            <Button onClick={handleCheck} className="w-full">
+              Check my chances
+            </Button>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Results */}
+      {showResults && estimate && (
+        <div className="space-y-6">
+          <Card className={`border-l-[4px] ${TIER_COLORS[estimate.yourBand] || ''}`}>
+            <CardContent className="py-6 space-y-4">
+              {/* School + band */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                  <h2 className="text-xl font-bold">{estimate.school.name}</h2>
+                  <p className="text-sm text-muted-foreground">
+                    {schoolType === 'selective' ? 'Selective High School' : 'Opportunity Class'} — Your reserve band: {estimate.yourBand}
+                  </p>
+                </div>
+                <Badge
+                  className="text-base px-4 py-1.5 font-semibold"
+                  style={{
+                    backgroundColor: getProbabilityStyle(estimate.probability).color,
+                    color: '#fff',
+                    border: 'none',
+                  }}
+                >
+                  {getProbabilityStyle(estimate.probability).label} — {estimate.chancePercent}% chance
+                </Badge>
+              </div>
+
+              <Separator />
+
+              {/* Description */}
+              <div>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {estimate.description}
+                </p>
+              </div>
+
+              {/* Historical data */}
+              <div>
+                <h4 className="text-sm font-semibold mb-2">Historical reserve band data</h4>
+                <p className="text-xs text-muted-foreground mb-2">{estimate.historicalSummary}</p>
+                <div className="flex flex-wrap gap-2">
+                  {estimate.school.band2026 && (
+                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2026]}>
+                      2026 (Live): Band {estimate.school.band2026}
+                    </Badge>
+                  )}
+                  {estimate.school.band2025 && (
+                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2025]}>
+                      2025: Band {estimate.school.band2025}
+                    </Badge>
+                  )}
+                  {estimate.school.band2024 && (
+                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2024]}>
+                      2024: Band {estimate.school.band2024}
+                    </Badge>
+                  )}
+                  {!estimate.school.band2026 && !estimate.school.band2025 && !estimate.school.band2024 && (
+                    <span className="text-xs text-muted-foreground">No historical data available for this school.</span>
+                  )}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* How to interpret */}
+          <Alert className="bg-amber-50 border-amber-200 text-amber-800">
+            <AlertDescription className="text-sm leading-relaxed">
+              <strong>Important:</strong> These estimates are based on community-tracked
+              historical reserve list movement. The NSW Department of Education assigns
+              bands based on previous years, but actual movement varies. Bands are updated
+              periodically during the offer period. This tool provides a guide, not a guarantee.
+            </AlertDescription>
+          </Alert>
+
+          {/* Band reference */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Reserve band reference</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                {BAND_OPTIONS.map(opt => (
+                  <div key={opt.value} className="flex items-center gap-2">
+                    <div
+                      className="w-3 h-3 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: TIER_COLORS[opt.value] ? (opt.value === 'A' ? '#16a34a' : opt.value === 'B' ? '#22c55e' : opt.value === 'C' ? '#eab308' : opt.value === 'D' ? '#f97316' : opt.value === 'E' ? '#ef4444' : '#991b1b') : '#6b7280' }}
+                    />
+                    <span><strong>{opt.value}</strong>: {opt.label.split(' — ')[1] || opt.label}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="text-center">
+            <Button variant="outline" onClick={handleReset}>
+              Check another school
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* Info section below (show when no results yet) */}
+      {!showResults && (
+        <>
+          <Separator />
+          <section className="space-y-6">
+            <h2 className="text-xl font-semibold">How reserve lists work</h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="space-y-2 p-5 rounded-xl bg-muted/30 border border-border/50">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground text-lg font-bold">
+                  1
+                </div>
+                <h3 className="font-medium mt-3">You get a band</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  When your child is placed on a reserve list, the outcome letter shows
+                  a band from A (best) to F (unlikely). The band estimates your chances
+                  based on previous years.
+                </p>
+              </div>
+              <div className="space-y-2 p-5 rounded-xl bg-muted/30 border border-border/50">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground text-lg font-bold">
+                  2
+                </div>
+                <h3 className="font-medium mt-3">Offers roll down</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  As families decline their initial offers, places open up. The reserve
+                  list moves down band by band over several months, from Band A through
+                  to Band F.
+                </p>
+              </div>
+              <div className="space-y-2 p-5 rounded-xl bg-muted/30 border border-border/50">
+                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground text-lg font-bold">
+                  3
+                </div>
+                <h3 className="font-medium mt-3">Bands are estimates</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Bands are based on last year&apos;s movement — they are not guarantees.
+                  The actual list can move further or less depending on how many families
+                  decline each year.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section className="space-y-4">
+            <Separator />
+            <h2 className="text-xl font-semibold">Frequently Asked Questions</h2>
+            {[
+              {
+                q: 'How accurate is this estimator?',
+                a: 'Our tool compares your reserve band against community-tracked historical data from 2024-2026. It gives an informed estimate but cannot predict the exact movement for this year, which depends on how many families decline their offers.',
+              },
+              {
+                q: 'Where does the data come from?',
+                a: 'Reserve band data is sourced from community tracking sites and NSW Department of Education publications. We use bands reported for 2024, 2025, and the live 2026 cycle.',
+              },
+              {
+                q: 'What do the bands mean?',
+                a: 'Band A means offers within ~1 month, Band B ~2 months, Band C ~3 months, Band D ~4 months, Band E ~5 months, and Band F means unlikely to receive an offer at all. These are approximate timeframes.',
+              },
+              {
+                q: 'Can my child move between bands?',
+                a: 'The band assigned to your child stays the same, but the bands themselves are updated as offers go out. The Department updates the minimum band that has received an offer periodically during the placement period.',
+              },
+              {
+                q: 'Should I accept another offer while on the reserve list?',
+                a: 'Yes. Accept any firm offer you have. If a reserve list offer comes through later, you can typically switch. Being on a reserve list does not guarantee a place.',
+              },
+            ].map(faq => (
+              <div key={faq.q} className="p-5 rounded-xl bg-muted/20 border border-border/40">
+                <h3 className="font-medium text-base mb-2">{faq.q}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </section>
+        </>
+      )}
+    </div>
+  );
+}
