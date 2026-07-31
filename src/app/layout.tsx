@@ -5,11 +5,11 @@ import SiteNav from "@/components/site-nav";
 
 export const metadata: Metadata = {
   title: {
-    default: "NAPLAN Estimator — OC & Selective School Reach Tool",
-    template: "%s — NAPLAN Estimator",
+    default: "School Reach — NSW Parent Resource for OC & Selective Schools",
+    template: "%s — School Reach",
   },
   description:
-    "Enter your child's NAPLAN results to estimate which Opportunity Class (OC) or Selective high schools are within reach. Free NSW OC and selective school estimator based on community-reported data.",
+    "Free tools and resources for NSW parents navigating Opportunity Class (OC) and Selective High School placement. NAPLAN estimator, reserve list checker, and school guides based on community-reported data.",
   keywords: [
     "NAPLAN",
     "OC",
@@ -17,29 +17,32 @@ export const metadata: Metadata = {
     "Selective High School",
     "NSW",
     "school estimator",
+    "reserve list",
     "Year 3",
     "Year 5",
+    "Year 7",
     "NAPLAN estimator",
     "OC calculator",
     "selective school calculator",
     "NSW education",
+    "parent resource",
   ],
-  authors: [{ name: "NAPLAN Estimator" }],
+  authors: [{ name: "School Reach" }],
   metadataBase: new URL("https://schoolreach.com.au"),
   openGraph: {
-    title: "NAPLAN Estimator — OC & Selective School Reach",
+    title: "School Reach — NSW Parent Resource for OC & Selective Schools",
     description:
-      "Enter your child's NAPLAN results to estimate which Opportunity Class or Selective high schools are within reach.",
+      "Free tools and resources for NSW parents: NAPLAN estimator, reserve list checker, and guides for OC and Selective school placement.",
     url: "/",
-    siteName: "NAPLAN Estimator",
+    siteName: "School Reach",
     locale: "en_AU",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NAPLAN Estimator — OC & Selective School Reach",
+    title: "School Reach — NSW Parent Resource",
     description:
-      "Enter your child's NAPLAN results to estimate which Opportunity Class or Selective high schools are within reach.",
+      "Free tools and resources for NSW parents: NAPLAN estimator, reserve list checker, and guides for OC and Selective school placement.",
   },
   robots: {
     index: true,
@@ -74,9 +77,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              name: "NAPLAN Estimator",
+              name: "School Reach",
               description:
-                "Enter your child's NAPLAN results to estimate which Opportunity Class (OC) or Selective high schools are within reach.",
+                "Free tools and resources for NSW parents navigating OC and Selective school placement — NAPLAN estimator, reserve list checker, and school guides.",
               url: "https://schoolreach.com.au",
               applicationCategory: "EducationalApplication",
               operatingSystem: "All",
@@ -88,7 +91,7 @@ export default function RootLayout({
               },
               author: {
                 "@type": "Organization",
-                name: "NAPLAN Estimator",
+                name: "School Reach",
               },
               about: {
                 "@type": "Thing",
@@ -102,7 +105,7 @@ export default function RootLayout({
         <header className="border-b border-border/40 bg-background/80 backdrop-blur-md sticky top-0 z-10">
           <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
             <Link href="/" className="text-lg font-semibold tracking-tight text-primary">
-              NAPLAN Estimator
+              School Reach
             </Link>
             <SiteNav />
           </div>
