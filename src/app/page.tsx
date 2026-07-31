@@ -27,7 +27,7 @@ export default function HomePage() {
             href="/reserve-list"
             className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-muted/50 transition-colors"
           >
-            Check reserve list odds
+            Check OC & Selective reserve list
           </Link>
         </div>
       </section>
