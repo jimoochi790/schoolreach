@@ -18,7 +18,7 @@ export default function HomePage() {
         </p>
         <div className="flex flex-wrap gap-3 mt-8">
           <Link
-            href="/oc"
+            href="/naplan-oc-estimator"
             className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-5 py-2.5 text-sm font-medium hover:bg-foreground/90 transition-colors"
           >
             Try the NAPLAN estimator
@@ -35,7 +35,7 @@ export default function HomePage() {
       {/* Tools */}
       <section className="max-w-5xl mx-auto px-4 pb-24">
         <div className="grid sm:grid-cols-2 gap-5">
-          <Link href="/oc" className="block group">
+          <Link href="/naplan-oc-estimator" className="block group">
             <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">
@@ -65,7 +65,7 @@ export default function HomePage() {
             </Card>
           </Link>
 
-          <Link href="/selective" className="block group">
+          <Link href="/naplan-selective-estimator" className="block group">
             <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">

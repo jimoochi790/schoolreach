@@ -89,8 +89,8 @@ export default function SiteNav() {
       <NavDropdown
         label="NAPLAN Estimator"
         items={[
-          { href: "/oc", label: "Year 3 → OC" },
-          { href: "/selective", label: "Year 5 → Selective" },
+          { href: "/naplan-oc-estimator", label: "Year 3 → OC" },
+          { href: "/naplan-selective-estimator", label: "Year 5 → Selective" },
         ]}
       />
       <NavDropdown
