@@ -110,7 +110,7 @@ export default function RootLayout({
               <Link href="/selective" className="hover:text-foreground transition-colors">
                 Year 5 → Selective
               </Link>
-              <Link href="/reserve" className="hover:text-foreground transition-colors">
+              <Link href="/reserve-list" className="hover:text-foreground transition-colors">
                 Reserve List
               </Link>
               <Link href="/about" className="hover:text-foreground transition-colors">
