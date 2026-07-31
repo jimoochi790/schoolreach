@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
 import SiteNav from "@/components/site-nav";
+import { LogoMark } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: {
@@ -104,7 +105,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans">
         <header className="border-b border-border/40 bg-background/80 backdrop-blur-md sticky top-0 z-10">
           <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-            <Link href="/" className="text-lg font-semibold tracking-tight text-primary">
+            <Link href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-tight text-primary">
+              <LogoMark className="w-7 h-7" />
               School Reach
             </Link>
             <SiteNav />

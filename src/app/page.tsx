@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { BookIcon, ChartIcon, WaitlistIcon, SchoolIcon, SectionDivider } from "@/components/icons";
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero — simple, text-driven, no gradients */}
+      {/* Hero */}
       <section className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance leading-snug">
           Free tools for NSW parents navigating Opportunity Class and Selective
@@ -32,16 +33,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Tools — cards with personality, not cookie-cutter */}
+      {/* Tools */}
       <section className="max-w-5xl mx-auto px-4 pb-24">
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           <Link href="/oc" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardDescription className="text-xs font-medium tracking-widest uppercase">
-                  NAPLAN estimator
-                </CardDescription>
-                <CardTitle className="text-xl mt-1">Year 3 → Opportunity Class</CardTitle>
+            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex items-start gap-4">
+                  <div className="text-blue-600 dark:text-blue-400 mt-0.5">
+                    <ChartIcon className="w-10 h-10" />
+                  </div>
+                  <div>
+                    <CardDescription className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/70">
+                      NAPLAN estimator
+                    </CardDescription>
+                    <CardTitle className="text-lg mt-0.5">Year 3 → Opportunity Class</CardTitle>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -50,20 +58,28 @@ export default function HomePage() {
                   schools are realistic for Year 5 entry — sorted into Stretch,
                   Target, and Safe tiers.
                 </p>
-                <p className="text-xs text-muted-foreground/60 mt-3">
+                <p className="text-[11px] text-muted-foreground/50 mt-3 font-mono">
                   88 schools · community-reported cutoffs · 2025 data
                 </p>
               </CardContent>
+              <div className="h-0.5 bg-blue-500/20 group-hover:bg-blue-500/40 transition-colors" />
             </Card>
           </Link>
 
           <Link href="/selective" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardDescription className="text-xs font-medium tracking-widest uppercase">
-                  NAPLAN estimator
-                </CardDescription>
-                <CardTitle className="text-xl mt-1">Year 5 → Selective High School</CardTitle>
+            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex items-start gap-4">
+                  <div className="text-violet-600 dark:text-violet-400 mt-0.5">
+                    <ChartIcon className="w-10 h-10" />
+                  </div>
+                  <div>
+                    <CardDescription className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/70">
+                      NAPLAN estimator
+                    </CardDescription>
+                    <CardTitle className="text-lg mt-0.5">Year 5 → Selective High School</CardTitle>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -72,20 +88,28 @@ export default function HomePage() {
                   entry. All cutoffs are community-reported and updated for the
                   latest intake.
                 </p>
-                <p className="text-xs text-muted-foreground/60 mt-3">
+                <p className="text-[11px] text-muted-foreground/50 mt-3 font-mono">
                   48 schools · community-reported cutoffs · 2025 data
                 </p>
               </CardContent>
+              <div className="h-0.5 bg-violet-500/20 group-hover:bg-violet-500/40 transition-colors" />
             </Card>
           </Link>
 
           <Link href="/reserve-list/oc" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardDescription className="text-xs font-medium tracking-widest uppercase">
-                  Reserve list
-                </CardDescription>
-                <CardTitle className="text-xl mt-1">OC waitlist odds</CardTitle>
+            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex items-start gap-4">
+                  <div className="text-emerald-600 dark:text-emerald-400 mt-0.5">
+                    <WaitlistIcon className="w-10 h-10" />
+                  </div>
+                  <div>
+                    <CardDescription className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/70">
+                      Reserve list
+                    </CardDescription>
+                    <CardTitle className="text-lg mt-0.5">OC waitlist odds</CardTitle>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -94,20 +118,28 @@ export default function HomePage() {
                   an offer. Based on 2024–2026 community-tracked reserve
                   movement for all 88 schools.
                 </p>
-                <p className="text-xs text-muted-foreground/60 mt-3">
+                <p className="text-[11px] text-muted-foreground/50 mt-3 font-mono">
                   3 years of data · 88 schools · community-tracked
                 </p>
               </CardContent>
+              <div className="h-0.5 bg-emerald-500/20 group-hover:bg-emerald-500/40 transition-colors" />
             </Card>
           </Link>
 
           <Link href="/reserve-list/selective" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardDescription className="text-xs font-medium tracking-widest uppercase">
-                  Reserve list
-                </CardDescription>
-                <CardTitle className="text-xl mt-1">Selective waitlist odds</CardTitle>
+            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+              <CardHeader className="pb-3">
+                <div className="flex items-start gap-4">
+                  <div className="text-amber-600 dark:text-amber-400 mt-0.5">
+                    <WaitlistIcon className="w-10 h-10" />
+                  </div>
+                  <div>
+                    <CardDescription className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/70">
+                      Reserve list
+                    </CardDescription>
+                    <CardTitle className="text-lg mt-0.5">Selective waitlist odds</CardTitle>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
@@ -115,23 +147,24 @@ export default function HomePage() {
                   pick your band, see the odds. Covers all 48 NSW selective
                   schools with 2024–2026 reserve band history.
                 </p>
-                <p className="text-xs text-muted-foreground/60 mt-3">
+                <p className="text-[11px] text-muted-foreground/50 mt-3 font-mono">
                   3 years of data · 48 schools · community-tracked
                 </p>
               </CardContent>
+              <div className="h-0.5 bg-amber-500/20 group-hover:bg-amber-500/40 transition-colors" />
             </Card>
           </Link>
         </div>
       </section>
 
-      <Separator />
+      <SectionDivider />
 
-      {/* How it works — conversational, not numbered steps */}
+      {/* How it works */}
       <section className="max-w-3xl mx-auto px-4 py-20">
-        <h2 className="text-2xl font-bold mb-8">How it works</h2>
-        <div className="space-y-10">
+        <h2 className="text-2xl font-bold mb-10">How it works</h2>
+        <div className="space-y-12">
           <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
-            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+            <div className="text-muted-foreground/40 text-sm font-mono sm:w-24 flex-shrink-0">
               01
             </div>
             <div>
@@ -144,7 +177,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
-            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+            <div className="text-muted-foreground/40 text-sm font-mono sm:w-24 flex-shrink-0">
               02
             </div>
             <div>
@@ -158,7 +191,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
-            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+            <div className="text-muted-foreground/40 text-sm font-mono sm:w-24 flex-shrink-0">
               03
             </div>
             <div>
@@ -173,12 +206,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Separator />
+      <SectionDivider />
 
-      {/* NAPLAN info — two uneven columns, no icons */}
+      {/* NAPLAN info */}
       <section className="max-w-5xl mx-auto px-4 py-20">
-        <div className="grid sm:grid-cols-5 gap-8">
+        <div className="grid sm:grid-cols-5 gap-10">
           <div className="sm:col-span-2">
+            <div className="text-muted-foreground/40 mb-4">
+              <BookIcon className="w-10 h-10" />
+            </div>
             <h2 className="text-xl font-bold mb-3">What is NAPLAN?</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
               NAPLAN (National Assessment Program — Literacy and Numeracy) is
@@ -208,13 +244,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Separator />
+      <SectionDivider />
 
-      {/* OC & Selective — side by side but different widths */}
+      {/* OC & Selective */}
       <section className="max-w-5xl mx-auto px-4 py-20">
         <h2 className="text-2xl font-bold mb-8">OC and Selective Schools in NSW</h2>
         <div className="grid sm:grid-cols-2 gap-10">
-          <div>
+          <div className="p-6 rounded-xl border border-border/60 hover:border-blue-300/60 hover:shadow-sm transition-all">
+            <div className="text-blue-500/40 mb-4">
+              <SchoolIcon className="w-8 h-8" />
+            </div>
             <h3 className="text-lg font-semibold mb-3">Opportunity Classes</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               For high-achieving Year 4 students aiming for Year 5 entry.
@@ -223,12 +262,15 @@ export default function HomePage() {
               placement is based on a combination of test scores and school
               assessments.
             </p>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-muted-foreground/50">
               Highly competitive in Sydney metro areas. Many families prepare
               with tutoring and practice papers starting in Year 3.
             </p>
           </div>
-          <div>
+          <div className="p-6 rounded-xl border border-border/60 hover:border-violet-300/60 hover:shadow-sm transition-all">
+            <div className="text-violet-500/40 mb-4">
+              <SchoolIcon className="w-8 h-8" />
+            </div>
             <h3 className="text-lg font-semibold mb-3">Selective High Schools</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               For high-achieving Year 6 students aiming for Year 7 entry.
@@ -236,7 +278,7 @@ export default function HomePage() {
               Students sit the Selective High School Placement Test in Year 6,
               and entry is based on test performance plus school assessments.
             </p>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-muted-foreground/50">
               Top schools like James Ruse and Baulkham Hills have cutoff
               scores above 230 out of 300. Competition is intense.
             </p>
@@ -244,9 +286,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Separator />
+      <SectionDivider />
 
-      {/* FAQ — plain, no details/summary tricks */}
+      {/* FAQ */}
       <section className="max-w-3xl mx-auto px-4 py-20">
         <h2 className="text-2xl font-bold mb-8">Frequently asked questions</h2>
         <div className="space-y-6">
