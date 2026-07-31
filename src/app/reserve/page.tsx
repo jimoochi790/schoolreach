@@ -38,7 +38,6 @@ export default function ReservePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
   const [yourBand, setYourBand] = useState<ReserveBand | null>(null);
-  const [showResults, setShowResults] = useState(false);
 
   const schools = useMemo(() => getReserveSchools(schoolType), [schoolType]);
 
@@ -58,19 +57,13 @@ export default function ReservePage() {
   const handleSchoolSelect = (name: string) => {
     setSelectedSchool(name);
     setSearchQuery(name);
-  };
-
-  const handleCheck = () => {
-    if (selectedSchool && yourBand) {
-      setShowResults(true);
-    }
+    setYourBand(null);
   };
 
   const handleReset = () => {
     setSelectedSchool(null);
     setYourBand(null);
     setSearchQuery('');
-    setShowResults(false);
   };
 
   return (
@@ -106,14 +99,14 @@ export default function ReservePage() {
               <Button
                 variant={schoolType === 'selective' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => { setSchoolType('selective'); setSelectedSchool(null); setSearchQuery(''); setShowResults(false); }}
+                onClick={() => { setSchoolType('selective'); setSelectedSchool(null); setSearchQuery(''); }}
               >
                 Selective (Year 7)
               </Button>
               <Button
                 variant={schoolType === 'oc' ? 'default' : 'outline'}
                 size="sm"
-                onClick={() => { setSchoolType('oc'); setSelectedSchool(null); setSearchQuery(''); setShowResults(false); }}
+                onClick={() => { setSchoolType('oc'); setSelectedSchool(null); setSearchQuery(''); }}
               >
                 OC (Year 5)
               </Button>
@@ -131,7 +124,6 @@ export default function ReservePage() {
                 onChange={e => {
                   setSearchQuery(e.target.value);
                   setSelectedSchool(null);
-                  setShowResults(false);
                 }}
                 className="pl-8"
               />
@@ -180,7 +172,7 @@ export default function ReservePage() {
                 {BAND_OPTIONS.map(opt => (
                   <button
                     key={opt.value}
-                    onClick={() => { setYourBand(opt.value); setShowResults(false); }}
+                    onClick={() => setYourBand(opt.value)}
                     className={`text-left px-3 py-2 rounded-lg border text-sm transition-all ${
                       BAND_COLORS[opt.value].bg
                     } ${
@@ -195,18 +187,11 @@ export default function ReservePage() {
               </div>
             </div>
           )}
-
-          {/* Check button */}
-          {selectedSchool && yourBand && (
-            <Button onClick={handleCheck} className="w-full">
-              Check my chances
-            </Button>
-          )}
         </CardContent>
       </Card>
 
-      {/* Results */}
-      {showResults && estimate && (
+      {/* Results — show when school + band selected */}
+      {estimate && (
         <div className="space-y-6">
           <Card className={`border-l-[4px] ${BAND_CARD_BORDER[estimate.yourBand] || ''}`}>
             <CardContent className="py-6 space-y-4">
@@ -305,7 +290,7 @@ export default function ReservePage() {
       )}
 
       {/* Info section below (show when no results yet) */}
-      {!showResults && (
+      {!estimate && (
         <>
           <Separator />
           <section className="space-y-6">
