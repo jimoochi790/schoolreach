@@ -1,354 +1,283 @@
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import {
-  TrendingUp,
-  ClipboardList,
-  School,
-  GraduationCap,
-  BarChart3,
-  Search,
-  ShieldCheck,
-  BookOpen,
-  Users,
-  Award,
-  ChevronRight,
-  Star,
-} from "lucide-react";
-
-const tools = [
-  {
-    href: "/oc",
-    icon: BarChart3,
-    color: "from-blue-500 to-indigo-500",
-    border: "border-t-blue-500",
-    bg: "bg-blue-50 dark:bg-blue-950/20",
-    title: "NAPLAN → OC Estimator",
-    desc: "Year 3 NAPLAN to Opportunity Class placement",
-    detail: "See which of 88 NSW OC schools are within reach for Year 5 entry based on your child's NAPLAN bands.",
-    stat: "88 schools",
-  },
-  {
-    href: "/selective",
-    icon: TrendingUp,
-    color: "from-violet-500 to-purple-500",
-    border: "border-t-violet-500",
-    bg: "bg-violet-50 dark:bg-violet-950/20",
-    title: "NAPLAN → Selective Estimator",
-    desc: "Year 5 NAPLAN to Selective High School placement",
-    detail: "See which of 48 Selective High Schools are realistic for Year 7 entry based on NAPLAN bands.",
-    stat: "48 schools",
-  },
-  {
-    href: "/reserve-list/oc",
-    icon: ClipboardList,
-    color: "from-emerald-500 to-teal-500",
-    border: "border-t-emerald-500",
-    bg: "bg-emerald-50 dark:bg-emerald-950/20",
-    title: "OC Reserve List Checker",
-    desc: "Chances of an OC offer from the waitlist",
-    detail: "Based on 2024–2026 community-tracked reserve band movement across all 88 OC schools.",
-    stat: "3yr data",
-  },
-  {
-    href: "/reserve-list/selective",
-    icon: Users,
-    color: "from-amber-500 to-orange-500",
-    border: "border-t-amber-500",
-    bg: "bg-amber-50 dark:bg-amber-950/20",
-    title: "Selective Reserve List Checker",
-    desc: "Chances of a Selective offer from the waitlist",
-    detail: "Based on 2024–2026 community-tracked reserve band movement across all 48 selective schools.",
-    stat: "3yr data",
-  },
-];
-
-const steps = [
-  {
-    icon: Search,
-    title: "Enter scores or band",
-    desc: "For the NAPLAN estimator, drag the dots to match your child's bands. For the reserve list checker, pick your school and reserve band.",
-  },
-  {
-    icon: BarChart3,
-    title: "We estimate your chances",
-    desc: "Our tools map your inputs against community-reported school cutoffs and historical reserve list movement from 2024–2026.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Plan with confidence",
-    desc: "See which schools are Stretch, Target, or Safe — or understand your reserve list chances — so you can make informed decisions.",
-  },
-];
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 via-background to-background">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-        <div className="relative max-w-5xl mx-auto px-4 py-20 sm:py-28 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold border border-primary/20">
-            <Star className="w-3.5 h-3.5" />
-            Free Tools for NSW Parents
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
-            Helping Parents Navigate
-            <br />
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              OC & Selective Schools
-            </span>
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-            Free NAPLAN estimator, reserve list checker, and school guides.
-            Built for NSW parents, using community-reported data.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
-              href="/oc"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity shadow-lg shadow-primary/25"
-            >
-              Try NAPLAN Estimator
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/reserve-list"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-background font-medium text-sm hover:bg-muted transition-colors"
-            >
-              Check Reserve List
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          </div>
+      {/* Hero — simple, text-driven, no gradients */}
+      <section className="max-w-3xl mx-auto px-4 py-24 sm:py-32">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-balance leading-snug">
+          Free tools for NSW parents navigating Opportunity Class and Selective
+          High School placement.
+        </h1>
+        <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-xl leading-relaxed">
+          Enter your child&apos;s NAPLAN results to see which schools are within
+          reach, or check your odds of getting an offer from the reserve list.
+          Everything is free, no sign-up required.
+        </p>
+        <div className="flex flex-wrap gap-3 mt-8">
+          <Link
+            href="/oc"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-5 py-2.5 text-sm font-medium hover:bg-foreground/90 transition-colors"
+          >
+            Try the NAPLAN estimator
+          </Link>
+          <Link
+            href="/reserve-list"
+            className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-muted/50 transition-colors"
+          >
+            Check reserve list odds
+          </Link>
         </div>
       </section>
 
-      {/* Tools */}
-      <section className="max-w-5xl mx-auto px-4 pb-20 space-y-10">
-        <div className="text-center space-y-3">
-          <h2 className="text-2xl sm:text-3xl font-bold">Our Tools</h2>
-          <p className="text-muted-foreground">Free, no sign-up required</p>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-5">
-          {tools.map((tool) => {
-            const Icon = tool.icon;
-            return (
-              <Link key={tool.href} href={tool.href} className="block group">
-                <Card className={`h-full border-t-[3px] ${tool.border} transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}>
-                  <CardHeader className="pb-3">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className={`p-2.5 rounded-xl ${tool.bg}`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <span className="text-xs font-semibold text-muted-foreground bg-muted px-2.5 py-1 rounded-full">
-                        {tool.stat}
-                      </span>
-                    </div>
-                    <CardTitle className="text-xl mt-3">{tool.title}</CardTitle>
-                    <CardDescription className="text-sm">{tool.desc}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {tool.detail}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <div className="max-w-5xl mx-auto px-4 pb-20">
-        <Alert className="bg-amber-50/80 border-amber-200 text-amber-800">
-          <AlertDescription className="text-sm leading-relaxed">
-            <strong>Important:</strong> All tools provide estimates based on
-            community-reported historical data. They are not official
-            prediction tools. Always verify with the NSW Department of
-            Education.
-          </AlertDescription>
-        </Alert>
-      </div>
-
-      {/* How it works */}
-      <section className="max-w-5xl mx-auto px-4 pb-20">
-        <Separator className="mb-12" />
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold">How our tools work</h2>
-        </div>
-        <div className="grid sm:grid-cols-3 gap-6">
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <div
-                key={step.title}
-                className="relative group p-6 rounded-2xl border border-border/60 bg-background hover:border-primary/30 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold shadow-md">
-                  {i + 1}
-                </div>
-                <div className="p-2.5 rounded-xl bg-primary/10 w-fit mb-4">
-                  <Icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-semibold mb-2">{step.title}</h3>
+      {/* Tools — cards with personality, not cookie-cutter */}
+      <section className="max-w-5xl mx-auto px-4 pb-24">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <Link href="/oc" className="block group">
+            <Card className="h-full hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardDescription className="text-xs font-medium tracking-widest uppercase">
+                  NAPLAN estimator
+                </CardDescription>
+                <CardTitle className="text-xl mt-1">Year 3 → Opportunity Class</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {step.desc}
+                  Drag the dots on each NAPLAN band to match your child&apos;s
+                  Year 3 results. We&apos;ll show you which of the 88 NSW OC
+                  schools are realistic for Year 5 entry — sorted into Stretch,
+                  Target, and Safe tiers.
                 </p>
-              </div>
-            );
-          })}
+                <p className="text-xs text-muted-foreground/60 mt-3">
+                  88 schools · community-reported cutoffs · 2025 data
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/selective" className="block group">
+            <Card className="h-full hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardDescription className="text-xs font-medium tracking-widest uppercase">
+                  NAPLAN estimator
+                </CardDescription>
+                <CardTitle className="text-xl mt-1">Year 5 → Selective High School</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Same tool, for Year 5. Enter NAPLAN bands to see which of the
+                  48 NSW Selective High Schools are within reach for Year 7
+                  entry. All cutoffs are community-reported and updated for the
+                  latest intake.
+                </p>
+                <p className="text-xs text-muted-foreground/60 mt-3">
+                  48 schools · community-reported cutoffs · 2025 data
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/reserve-list/oc" className="block group">
+            <Card className="h-full hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardDescription className="text-xs font-medium tracking-widest uppercase">
+                  Reserve list
+                </CardDescription>
+                <CardTitle className="text-xl mt-1">OC waitlist odds</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Your child got a reserve band — now what? Pick your OC school
+                  and band (A–F) to see the historical likelihood of receiving
+                  an offer. Based on 2024–2026 community-tracked reserve
+                  movement for all 88 schools.
+                </p>
+                <p className="text-xs text-muted-foreground/60 mt-3">
+                  3 years of data · 88 schools · community-tracked
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link href="/reserve-list/selective" className="block group">
+            <Card className="h-full hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardDescription className="text-xs font-medium tracking-widest uppercase">
+                  Reserve list
+                </CardDescription>
+                <CardTitle className="text-xl mt-1">Selective waitlist odds</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Same tool for Selective High Schools. Pick your school,
+                  pick your band, see the odds. Covers all 48 NSW selective
+                  schools with 2024–2026 reserve band history.
+                </p>
+                <p className="text-xs text-muted-foreground/60 mt-3">
+                  3 years of data · 48 schools · community-tracked
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </section>
 
-      {/* What is NAPLAN */}
-      <section className="max-w-5xl mx-auto px-4 pb-20">
-        <Separator className="mb-12" />
-        <div className="grid sm:grid-cols-2 gap-12 items-start">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-              <BookOpen className="w-3.5 h-3.5" />
-              Learn
+      <Separator />
+
+      {/* How it works — conversational, not numbered steps */}
+      <section className="max-w-3xl mx-auto px-4 py-20">
+        <h2 className="text-2xl font-bold mb-8">How it works</h2>
+        <div className="space-y-10">
+          <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
+            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+              01
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">What is NAPLAN?</h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <div>
+              <h3 className="font-semibold mb-1">Enter your child&apos;s results</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                For the NAPLAN estimator, you drag a dot on each subject bar
+                to match your child&apos;s band. For the reserve list checker,
+                you pick a school and your assigned reserve band (A through F).
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
+            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+              02
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">We compare against historical data</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The NAPLAN estimator maps band levels to placement scores using
+                community-reported school cutoffs. The reserve list checker
+                compares your band against how far the waitlist moved at that
+                school in 2024, 2025, and 2026.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:gap-8 gap-2">
+            <div className="text-muted-foreground text-sm font-mono sm:w-24 flex-shrink-0">
+              03
+            </div>
+            <div>
+              <h3 className="font-semibold mb-1">You get a clear picture</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Schools are shown as Stretch, Target, or Safe. Reserve list
+                results show your odds as a percentage. Everything is an
+                estimate — use it as a starting point, not a guarantee.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* NAPLAN info — two uneven columns, no icons */}
+      <section className="max-w-5xl mx-auto px-4 py-20">
+        <div className="grid sm:grid-cols-5 gap-8">
+          <div className="sm:col-span-2">
+            <h2 className="text-xl font-bold mb-3">What is NAPLAN?</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
               NAPLAN (National Assessment Program — Literacy and Numeracy) is
-              an annual assessment for Australian students in Years 3, 5, 7
-              and 9. It measures skills in five domains:{" "}
-              <strong className="text-foreground">numeracy</strong>,{" "}
-              <strong className="text-foreground">reading</strong>,{" "}
-              <strong className="text-foreground">writing</strong>,{" "}
-              <strong className="text-foreground">spelling</strong> and{" "}
-              <strong className="text-foreground">grammar</strong>.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Results are reported across four proficiency bands:{" "}
-              <strong>Exceeding</strong>, <strong>Strong</strong>,{" "}
-              <strong>Developing</strong> and{" "}
-              <strong>Needs additional support</strong>.
+              an annual test for Australian students in Years 3, 5, 7 and 9.
+              It covers numeracy, reading, writing, spelling, and grammar.
+              Results are reported as bands — Exceeding, Strong, Developing,
+              or Needs additional support.
             </p>
           </div>
-          <div className="space-y-4">
-            {[
-              { icon: Award, label: "OC Placement", text: "NAPLAN results help determine eligibility for Opportunity Class (OC) placements in Year 5." },
-              { icon: GraduationCap, label: "Selective Entry", text: "Strong NAPLAN results indicate readiness for Selective High School placement in Year 7." },
-              { icon: School, label: "NSW Schools", text: "Covers all 88 OC and 48 Selective schools across NSW with community-reported cutoff data." },
-            ].map((item) => {
-              const ItemIcon = item.icon;
-              return (
-                <div key={item.label} className="flex gap-4 p-4 rounded-xl bg-muted/30 border border-border/40">
-                  <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
-                    <ItemIcon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-sm">{item.label}</h4>
-                    <p className="text-sm text-muted-foreground">{item.text}</p>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="sm:col-span-3">
+            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+              <p>
+                NAPLAN results are a key ingredient in Opportunity Class and
+                Selective High School placement. While the placement test
+                itself carries the most weight, strong NAPLAN bands are a good
+                indicator of readiness — and they&apos;re the data our tools
+                use to estimate your child&apos;s chances.
+              </p>
+              <p>
+                Our cutoff data is community-reported from past intake rounds.
+                Cutoffs vary year to year depending on the applicant pool and
+                available places. Treat every number as indicative — check the
+                NSW Department of Education for official guidance.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* OC & Selective */}
-      <section className="max-w-5xl mx-auto px-4 pb-20">
-        <Separator className="mb-12" />
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold">OC and Selective Schools in NSW</h2>
-        </div>
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border border-blue-200 dark:border-blue-800">
-            <div className="p-2.5 rounded-xl bg-blue-100 dark:bg-blue-900/40 w-fit mb-4">
-              <School className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            <h3 className="text-xl font-bold mb-1">Opportunity Classes (OC)</h3>
-            <p className="text-sm text-muted-foreground mb-4">Year 5 entry for high-achieving Year 4 students</p>
-            <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
-              <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-1">•</span>
-                Available at 75+ public primary schools across NSW
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-1">•</span>
-                Students sit the OC Placement Test in Year 4
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-1">•</span>
-                Placement combines test scores with school assessments
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-blue-500 mt-1">•</span>
-                Highly competitive in metropolitan areas like Sydney
-              </li>
-            </ul>
+      <Separator />
+
+      {/* OC & Selective — side by side but different widths */}
+      <section className="max-w-5xl mx-auto px-4 py-20">
+        <h2 className="text-2xl font-bold mb-8">OC and Selective Schools in NSW</h2>
+        <div className="grid sm:grid-cols-2 gap-10">
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Opportunity Classes</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              For high-achieving Year 4 students aiming for Year 5 entry.
+              There are around 75 OC classes across NSW public primary
+              schools. Students sit the OC Placement Test in Year 4, and
+              placement is based on a combination of test scores and school
+              assessments.
+            </p>
+            <p className="text-xs text-muted-foreground/60">
+              Highly competitive in Sydney metro areas. Many families prepare
+              with tutoring and practice papers starting in Year 3.
+            </p>
           </div>
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/20 dark:to-purple-950/20 border border-violet-200 dark:border-violet-800">
-            <div className="p-2.5 rounded-xl bg-violet-100 dark:bg-violet-900/40 w-fit mb-4">
-              <GraduationCap className="w-6 h-6 text-violet-600 dark:text-violet-400" />
-            </div>
-            <h3 className="text-xl font-bold mb-1">Selective High Schools</h3>
-            <p className="text-sm text-muted-foreground mb-4">Year 7 entry for high-achieving Year 6 students</p>
-            <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
-              <li className="flex items-start gap-2">
-                <span className="text-violet-500 mt-1">•</span>
-                Over 40 fully and partially selective schools across NSW
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-violet-500 mt-1">•</span>
-                Students sit the Selective High School Placement Test
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-violet-500 mt-1">•</span>
-                Entry determined by test performance and school assessments
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-violet-500 mt-1">•</span>
-                Some schools have cutoff scores above 230 out of 300
-              </li>
-            </ul>
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Selective High Schools</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              For high-achieving Year 6 students aiming for Year 7 entry.
+              Over 40 fully and partially selective schools across NSW.
+              Students sit the Selective High School Placement Test in Year 6,
+              and entry is based on test performance plus school assessments.
+            </p>
+            <p className="text-xs text-muted-foreground/60">
+              Top schools like James Ruse and Baulkham Hills have cutoff
+              scores above 230 out of 300. Competition is intense.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="max-w-3xl mx-auto px-4 pb-20">
-        <Separator className="mb-12" />
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold">Frequently Asked Questions</h2>
-        </div>
-        <div className="space-y-3">
+      <Separator />
+
+      {/* FAQ — plain, no details/summary tricks */}
+      <section className="max-w-3xl mx-auto px-4 py-20">
+        <h2 className="text-2xl font-bold mb-8">Frequently asked questions</h2>
+        <div className="space-y-6">
           {[
             {
-              q: "How accurate are the School Reach tools?",
-              a: "Our tools provide estimates based on community-reported historical data from previous years. They are designed as guides — not guarantees. Actual placement outcomes vary each year based on the applicant cohort, test difficulty, and school capacity.",
+              q: "How accurate are these tools?",
+              a: "They provide estimates based on community-reported data from past years. Cutoffs and reserve list movement change every intake, so treat the numbers as a guide rather than a prediction. Always check with the NSW Department of Education for official information.",
             },
             {
               q: "Where does the data come from?",
-              a: "Cutoff scores and reserve list bands are sourced from parent communities, school forums, and publicly available NSW Department of Education data. Figures should be treated as indicative — they fluctuate annually.",
+              a: "Cutoff scores and reserve bands are crowdsourced from parent forums, community trackers, and publicly available NSW Department of Education publications. We combine multiple years to give a fuller picture.",
             },
             {
-              q: "Is School Reach affiliated with the NSW Department of Education?",
-              a: "No. School Reach is an independent resource. We are not affiliated with NAPLAN, ACARA, or the NSW Department of Education. Always verify important decisions with official sources.",
+              q: "Are you affiliated with the NSW Government?",
+              a: "No. School Reach is independent. We are not connected to NAPLAN, ACARA, or the NSW Department of Education.",
             },
             {
-              q: "Does my child's NAPLAN band guarantee placement?",
-              a: "No. Placement is primarily determined by the OC or Selective Placement Test, plus school assessment scores. NAPLAN bands provide a useful readiness indicator but are not the deciding factor.",
+              q: "Does a good NAPLAN band guarantee a spot?",
+              a: "No. Placement depends mostly on the OC or Selective Placement Test and school assessment scores. NAPLAN bands are a useful readiness check, not a deciding factor.",
             },
             {
-              q: "How do I prepare my child for the test?",
-              a: "We recommend familiarising your child with the test format through past papers, building vocabulary and problem-solving skills, and considering structured practice. Many parents also use tutoring services and online practice exams.",
+              q: "How should we prepare?",
+              a: "Past papers, vocabulary building, and problem-solving practice help. Many families use tutoring or online practice exams. Start early and keep it low-pressure — the test is only one part of the picture.",
             },
           ].map((faq) => (
-            <details key={faq.q} className="group rounded-xl border border-border/40 bg-background">
-              <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer font-medium select-none marker:content-none">
-                {faq.q}
-                <ChevronRight className="w-4 h-4 text-muted-foreground transition-transform group-open:rotate-90 flex-shrink-0" />
-              </summary>
-              <div className="px-5 pb-5 -mt-1">
-                <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </div>
-            </details>
+            <div key={faq.q}>
+              <h3 className="font-medium mb-1.5">{faq.q}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {faq.a}
+              </p>
+            </div>
           ))}
         </div>
       </section>
