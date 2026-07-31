@@ -15,13 +15,22 @@ import {
 } from '@/lib/reserve';
 import type { ReserveBand } from '@/lib/reserve';
 
-const TIER_COLORS: Record<string, string> = {
-  'A': 'border-l-green-600 bg-green-50 dark:bg-green-950/20',
-  'B': 'border-l-green-500 bg-green-50/60 dark:bg-green-950/15',
-  'C': 'border-l-yellow-500 bg-yellow-50 dark:bg-yellow-950/20',
-  'D': 'border-l-orange-500 bg-orange-50 dark:bg-orange-950/20',
-  'E': 'border-l-red-500 bg-red-50 dark:bg-red-950/20',
-  'F': 'border-l-red-700 bg-red-50/60 dark:bg-red-950/15',
+const BAND_COLORS: Record<string, { bg: string; border: string; text: string; dot: string }> = {
+  'A': { bg: 'bg-emerald-100 border-emerald-300', border: 'border-l-emerald-600', text: 'text-emerald-800', dot: 'bg-emerald-600' },
+  'B': { bg: 'bg-green-100 border-green-300', border: 'border-l-green-500', text: 'text-green-800', dot: 'bg-green-500' },
+  'C': { bg: 'bg-yellow-100 border-yellow-300', border: 'border-l-yellow-500', text: 'text-yellow-800', dot: 'bg-yellow-500' },
+  'D': { bg: 'bg-orange-100 border-orange-300', border: 'border-l-orange-500', text: 'text-orange-800', dot: 'bg-orange-500' },
+  'E': { bg: 'bg-red-100 border-red-300', border: 'border-l-red-500', text: 'text-red-800', dot: 'bg-red-500' },
+  'F': { bg: 'bg-rose-100 border-rose-300', border: 'border-l-rose-600', text: 'text-rose-800', dot: 'bg-rose-600' },
+};
+
+const BAND_CARD_BORDER: Record<string, string> = {
+  'A': 'border-l-emerald-600 bg-emerald-50/60',
+  'B': 'border-l-green-500 bg-green-50/60',
+  'C': 'border-l-yellow-500 bg-yellow-50/60',
+  'D': 'border-l-orange-500 bg-orange-50/60',
+  'E': 'border-l-red-500 bg-red-50/60',
+  'F': 'border-l-rose-600 bg-rose-50/60',
 };
 
 export default function ReservePage() {
@@ -172,10 +181,12 @@ export default function ReservePage() {
                   <button
                     key={opt.value}
                     onClick={() => { setYourBand(opt.value); setShowResults(false); }}
-                    className={`text-left px-3 py-2 rounded-lg border text-sm transition-colors ${
+                    className={`text-left px-3 py-2 rounded-lg border text-sm transition-all ${
+                      BAND_COLORS[opt.value].bg
+                    } ${
                       yourBand === opt.value
-                        ? 'border-primary bg-primary/10 text-primary font-medium'
-                        : 'border-border hover:bg-muted'
+                        ? `${BAND_COLORS[opt.value].text} border-transparent font-medium shadow-sm ring-2 ring-offset-1 ring-current/30`
+                        : `${BAND_COLORS[opt.value].text} border-transparent/30 opacity-75 hover:opacity-100 hover:shadow-sm`
                     }`}
                   >
                     {opt.label}
@@ -197,7 +208,7 @@ export default function ReservePage() {
       {/* Results */}
       {showResults && estimate && (
         <div className="space-y-6">
-          <Card className={`border-l-[4px] ${TIER_COLORS[estimate.yourBand] || ''}`}>
+          <Card className={`border-l-[4px] ${BAND_CARD_BORDER[estimate.yourBand] || ''}`}>
             <CardContent className="py-6 space-y-4">
               {/* School + band */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -234,17 +245,17 @@ export default function ReservePage() {
                 <p className="text-xs text-muted-foreground mb-2">{estimate.historicalSummary}</p>
                 <div className="flex flex-wrap gap-2">
                   {estimate.school.band2026 && (
-                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2026]}>
+                    <Badge className={`${BAND_COLORS[estimate.school.band2026].bg} ${BAND_COLORS[estimate.school.band2026].text} border`}>
                       2026 (Live): Band {estimate.school.band2026}
                     </Badge>
                   )}
                   {estimate.school.band2025 && (
-                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2025]}>
+                    <Badge className={`${BAND_COLORS[estimate.school.band2025].bg} ${BAND_COLORS[estimate.school.band2025].text} border`}>
                       2025: Band {estimate.school.band2025}
                     </Badge>
                   )}
                   {estimate.school.band2024 && (
-                    <Badge variant="outline" className={TIER_COLORS[estimate.school.band2024]}>
+                    <Badge className={`${BAND_COLORS[estimate.school.band2024].bg} ${BAND_COLORS[estimate.school.band2024].text} border`}>
                       2024: Band {estimate.school.band2024}
                     </Badge>
                   )}
@@ -276,8 +287,7 @@ export default function ReservePage() {
                 {BAND_OPTIONS.map(opt => (
                   <div key={opt.value} className="flex items-center gap-2">
                     <div
-                      className="w-3 h-3 rounded-full flex-shrink-0"
-                      style={{ backgroundColor: TIER_COLORS[opt.value] ? (opt.value === 'A' ? '#16a34a' : opt.value === 'B' ? '#22c55e' : opt.value === 'C' ? '#eab308' : opt.value === 'D' ? '#f97316' : opt.value === 'E' ? '#ef4444' : '#991b1b') : '#6b7280' }}
+                      className={`w-3 h-3 rounded-full flex-shrink-0 ${BAND_COLORS[opt.value]?.dot || ''}`}
                     />
                     <span><strong>{opt.value}</strong>: {opt.label.split(' — ')[1] || opt.label}</span>
                   </div>
