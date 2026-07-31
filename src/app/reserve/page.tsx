@@ -13,7 +13,7 @@ import {
   getProbabilityStyle,
   BAND_OPTIONS,
 } from '@/lib/reserve';
-import type { ReserveBand, ReserveEstimate } from '@/lib/reserve';
+import type { ReserveBand } from '@/lib/reserve';
 
 const TIER_COLORS: Record<string, string> = {
   'A': 'border-l-green-600 bg-green-50 dark:bg-green-950/20',
