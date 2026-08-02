@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function ZhOCReservePage() {
-  return <ReserveEstimator initialSchoolType="oc" />;
+  return <ReserveEstimator initialSchoolType="oc" locale="zh" />;
 }

@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 };
 
 export default function ZhSelectiveReservePage() {
-  return <ReserveEstimator initialSchoolType="selective" />;
+  return <ReserveEstimator initialSchoolType="selective" locale="zh" />;
 }

@@ -186,6 +186,14 @@ function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boo
                 About
               </Link>
             </div>
+            <div className="pt-4 border-t border-border/40">
+              <Link
+                href={pathname.startsWith("/zh") ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname)}
+                className="block px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              >
+                {pathname.startsWith("/zh") ? "Switch to English" : "切换到中文"}
+              </Link>
+            </div>
           </nav>
         </div>
       )}
