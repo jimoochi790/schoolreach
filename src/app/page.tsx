@@ -322,6 +322,40 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Final CTA */}
+      <section className="max-w-3xl mx-auto px-4 py-20 text-center">
+        <h2 className="text-2xl font-bold mb-3">Ready to check your child&apos;s chances?</h2>
+        <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
+          Pick a tool and get started. No sign-up, no data collected —
+          everything runs in your browser.
+        </p>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Link
+            href="/naplan-oc-estimator"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-5 py-2.5 text-sm font-medium hover:bg-foreground/90 transition-colors"
+          >
+            Estimate OC schools
+          </Link>
+          <Link
+            href="/naplan-selective-estimator"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground text-background px-5 py-2.5 text-sm font-medium hover:bg-foreground/90 transition-colors"
+          >
+            Estimate Selective schools
+          </Link>
+          <Link
+            href="/reserve-list"
+            className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-muted/50 transition-colors"
+          >
+            Check reserve list odds
+          </Link>
+        </div>
+        <p className="text-xs text-muted-foreground/50 mt-8 max-w-md mx-auto">
+          All tools provide estimates based on community-reported historical
+          data. Not affiliated with NAPLAN, ACARA, or the NSW Department of
+          Education. Always verify with official sources.
+        </p>
+      </section>
     </>
   );
 }

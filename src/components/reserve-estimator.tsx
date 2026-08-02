@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -34,7 +35,7 @@ const BAND_CARD_BORDER: Record<string, string> = {
 };
 
 export default function ReserveEstimator({ initialSchoolType = 'selective' }: { initialSchoolType?: 'selective' | 'oc' }) {
-  const [schoolType, setSchoolType] = useState<'selective' | 'oc'>(initialSchoolType);
+  const [schoolType] = useState<'selective' | 'oc'>(initialSchoolType);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
   const [yourBand, setYourBand] = useState<ReserveBand | null>(null);
@@ -92,25 +93,17 @@ export default function ReserveEstimator({ initialSchoolType = 'selective' }: { 
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
-          {/* School type toggle */}
-          <div>
-            <label className="text-sm font-medium mb-2 block">School type</label>
-            <div className="flex gap-2">
-              <Button
-                variant={schoolType === 'selective' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => { setSchoolType('selective'); setSelectedSchool(null); setSearchQuery(''); }}
-              >
-                Selective (Year 7)
-              </Button>
-              <Button
-                variant={schoolType === 'oc' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => { setSchoolType('oc'); setSelectedSchool(null); setSearchQuery(''); }}
-              >
-                OC (Year 5)
-              </Button>
-            </div>
+          {/* Link to other school type */}
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-sm text-muted-foreground">
+              {schoolType === 'selective' ? 'Selective High Schools (Year 7 entry)' : 'Opportunity Classes (Year 5 entry)'}
+            </p>
+            <Link
+              href={schoolType === 'selective' ? '/reserve-list/oc' : '/reserve-list/selective'}
+              className="text-sm text-primary hover:underline"
+            >
+              {schoolType === 'selective' ? 'Check OC instead' : 'Check Selective instead'}
+            </Link>
           </div>
 
           {/* School search */}

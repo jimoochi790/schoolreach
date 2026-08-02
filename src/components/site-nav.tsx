@@ -9,6 +9,23 @@ interface NavItem {
   label: string;
 }
 
+const NAV_GROUPS = [
+  {
+    label: "NAPLAN Estimator",
+    items: [
+      { href: "/naplan-oc-estimator", label: "Year 3 → OC" },
+      { href: "/naplan-selective-estimator", label: "Year 5 → Selective" },
+    ],
+  },
+  {
+    label: "Reserve List",
+    items: [
+      { href: "/reserve-list/selective", label: "Selective Schools" },
+      { href: "/reserve-list/oc", label: "Opportunity Classes" },
+    ],
+  },
+];
+
 function NavDropdown({ label, items }: { label: string; items: NavItem[] }) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -17,7 +34,6 @@ function NavDropdown({ label, items }: { label: string; items: NavItem[] }) {
 
   const isActive = items.some(item => pathname.startsWith(item.href));
 
-  // Close on click outside
   useEffect(() => {
     if (!open) return;
     const handleClick = (e: MouseEvent) => {
@@ -84,25 +100,88 @@ function NavDropdown({ label, items }: { label: string; items: NavItem[] }) {
 }
 
 export default function SiteNav() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Close mobile menu on route change via key remount
+  return <SiteNavInner key={pathname} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} pathname={pathname} />;
+}
+
+function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boolean; setMobileOpen: (v: boolean) => void; pathname: string }) {
+
   return (
-    <nav className="flex items-center gap-1 text-sm">
-      <NavDropdown
-        label="NAPLAN Estimator"
-        items={[
-          { href: "/naplan-oc-estimator", label: "Year 3 → OC" },
-          { href: "/naplan-selective-estimator", label: "Year 5 → Selective" },
-        ]}
-      />
-      <NavDropdown
-        label="Reserve List"
-        items={[
-          { href: "/reserve-list/selective", label: "Selective Schools" },
-          { href: "/reserve-list/oc", label: "Opportunity Classes" },
-        ]}
-      />
-      <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors px-2">
-        About
-      </Link>
-    </nav>
+    <>
+      {/* Desktop nav */}
+      <nav className="hidden sm:flex items-center gap-1 text-sm">
+        {NAV_GROUPS.map(group => (
+          <NavDropdown key={group.label} label={group.label} items={group.items} />
+        ))}
+        <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors px-2">
+          About
+        </Link>
+      </nav>
+
+      {/* Mobile hamburger */}
+      <button
+        onClick={() => setMobileOpen(!mobileOpen)}
+        className="sm:hidden flex items-center justify-center w-9 h-9 rounded-lg hover:bg-muted transition-colors"
+        aria-label="Toggle menu"
+      >
+        {mobileOpen ? (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="sm:hidden fixed inset-x-0 top-14 bottom-0 bg-background z-50 overflow-y-auto">
+          <nav className="px-4 py-6 space-y-6">
+            {NAV_GROUPS.map(group => (
+              <div key={group.label}>
+                <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/50 mb-3">
+                  {group.label}
+                </p>
+                <div className="space-y-1">
+                  {group.items.map(item => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                        pathname.startsWith(item.href)
+                          ? "bg-primary/10 text-primary font-medium"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div>
+              <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/50 mb-3">
+                More
+              </p>
+              <Link
+                href="/about"
+                className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                  pathname.startsWith("/about")
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                }`}
+              >
+                About
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
+    </>
   );
 }

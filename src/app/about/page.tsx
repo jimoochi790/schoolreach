@@ -4,15 +4,15 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 
 export const metadata: Metadata = {
-  title: "About — How the NAPLAN School Estimator Works",
+  title: "About — How School Reach Works",
   description:
-    "Learn how the NAPLAN OC and Selective School Estimator works. Methodology, data sources, tier explanations, and FAQ about estimated cutoffs for NSW opportunity classes and selective high schools.",
+    "Learn how School Reach estimates OC and Selective school placement chances. Methodology, data sources, tier explanations, and FAQ about estimated cutoffs for NSW opportunity classes and selective high schools.",
 };
 
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12 space-y-8">
-      <h1 className="text-3xl font-bold tracking-tight">About this tool</h1>
+      <h1 className="text-3xl font-bold tracking-tight">About School Reach</h1>
 
       <Alert className="bg-amber-50 border-amber-200 text-amber-800">
         <AlertDescription className="text-sm">
