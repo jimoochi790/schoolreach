@@ -49,6 +49,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  alternates: {
+    languages: {
+      "en-AU": "https://schoolreach.com.au",
+      "zh-CN": "https://schoolreach.com.au/zh",
+    },
+  },
 };
 
 export default function RootLayout({

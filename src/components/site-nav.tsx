@@ -119,6 +119,13 @@ function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boo
         <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors px-2">
           About
         </Link>
+        <span className="text-border mx-1">|</span>
+        <Link
+          href={pathname.startsWith("/zh") ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname)}
+          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {pathname.startsWith("/zh") ? "EN" : "中文"}
+        </Link>
       </nav>
 
       {/* Mobile hamburger */}
