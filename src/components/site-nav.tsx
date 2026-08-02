@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 
 interface NavItem {
   href: string;
@@ -103,28 +103,72 @@ export default function SiteNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  const isZh = pathname.startsWith("/zh");
+  const localePrefix = isZh ? "/zh" : "";
+
+  // Localize paths by prepending /zh when in Chinese mode
+  const localize = useCallback((href: string) => localePrefix + href, [localePrefix]);
+
+  const localizedGroups = useMemo(() =>
+    NAV_GROUPS.map(group => ({
+      ...group,
+      items: group.items.map(item => ({ ...item, href: localize(item.href) })),
+    })), [localize]);
+
+  const aboutHref = localize("/about");
+  const switchHref = isZh ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname);
+  const switchLabel = isZh ? "EN" : "中文";
+
   // Close mobile menu on route change via key remount
-  return <SiteNavInner key={pathname} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} pathname={pathname} />;
+  return (
+    <SiteNavInner
+      key={pathname}
+      mobileOpen={mobileOpen}
+      setMobileOpen={setMobileOpen}
+      pathname={pathname}
+      localizedGroups={localizedGroups}
+      aboutHref={aboutHref}
+      switchHref={switchHref}
+      switchLabel={switchLabel}
+      isZh={isZh}
+    />
+  );
 }
 
-function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boolean; setMobileOpen: (v: boolean) => void; pathname: string }) {
+function SiteNavInner({
+  mobileOpen,
+  setMobileOpen,
+  pathname,
+  localizedGroups,
+  aboutHref,
+  switchHref,
+  switchLabel,
+  isZh,
+}: {
+  mobileOpen: boolean;
+  setMobileOpen: (v: boolean) => void;
+  pathname: string;
+  localizedGroups: typeof NAV_GROUPS;
+  aboutHref: string;
+  switchHref: string;
+  switchLabel: string;
+  isZh: boolean;
+}) {
+  const mobileSwitchLabel = isZh ? "Switch to English" : "切换到中文";
 
   return (
     <>
       {/* Desktop nav */}
       <nav className="hidden sm:flex items-center gap-1 text-sm">
-        {NAV_GROUPS.map(group => (
+        {localizedGroups.map(group => (
           <NavDropdown key={group.label} label={group.label} items={group.items} />
         ))}
-        <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors px-2">
+        <Link href={aboutHref} className="text-muted-foreground hover:text-foreground transition-colors px-2">
           About
         </Link>
         <span className="text-border mx-1">|</span>
-        <Link
-          href={pathname.startsWith("/zh") ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname)}
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
-        >
-          {pathname.startsWith("/zh") ? "EN" : "中文"}
+        <Link href={switchHref} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+          {switchLabel}
         </Link>
       </nav>
 
@@ -149,7 +193,7 @@ function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boo
       {mobileOpen && (
         <div className="sm:hidden fixed inset-x-0 top-14 bottom-0 bg-background z-50 overflow-y-auto">
           <nav className="px-4 py-6 space-y-6">
-            {NAV_GROUPS.map(group => (
+            {localizedGroups.map(group => (
               <div key={group.label}>
                 <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/50 mb-3">
                   {group.label}
@@ -176,9 +220,9 @@ function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boo
                 More
               </p>
               <Link
-                href="/about"
+                href={aboutHref}
                 className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                  pathname.startsWith("/about")
+                  pathname.startsWith(aboutHref)
                     ? "bg-primary/10 text-primary font-medium"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 }`}
@@ -188,10 +232,10 @@ function SiteNavInner({ mobileOpen, setMobileOpen, pathname }: { mobileOpen: boo
             </div>
             <div className="pt-4 border-t border-border/40">
               <Link
-                href={pathname.startsWith("/zh") ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname)}
+                href={switchHref}
                 className="block px-3 py-2.5 rounded-lg text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
               >
-                {pathname.startsWith("/zh") ? "Switch to English" : "切换到中文"}
+                {mobileSwitchLabel}
               </Link>
             </div>
           </nav>
