@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import ReserveEstimator from "@/components/reserve-estimator";
+import ReserveGuide from "@/components/reserve-guide";
 
 export const metadata: Metadata = {
-  title: "Selective High School Reserve List Estimator",
+  title: "Selective Reserve List 2025: Which Bands Got Offers",
   description:
-    "Check the likelihood of receiving a Year 7 offer from the NSW Selective High School reserve list. Enter your school and reserve band to see historical chances based on 2024–2026 data. Covers all 48 selective schools.",
+    "See which NSW selective school reserve lists reached which bands in 2025, check your child's chances from their reserve band, and understand how the list moves. Data for all 48 selective schools, 2024 to 2026.",
   keywords: [
-    "selective school reserve list",
-    "NSW selective high school",
-    "selective school placement",
+    "selective school reserve list 2025",
+    "selective reserve list 2025",
+    "selective reserve band 2025",
+    "selective reserve list NSW",
     "reserve band estimator",
     "Year 7 entry",
     "selective school offer chance",
@@ -16,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function SelectiveReservePage() {
-  return <ReserveEstimator initialSchoolType="selective" />;
+  return (
+    <>
+      <ReserveEstimator initialSchoolType="selective" />
+      <ReserveGuide schoolType="selective" />
+    </>
+  );
 }
