@@ -6,7 +6,9 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="max-w-3xl mx-auto px-4 pt-20 pb-8 sm:pt-24 sm:pb-10">
+      <section className="max-w-3xl mx-auto px-4 pt-20 pb-8 sm:pt-24 sm:pb-10 relative">
+        <div className="absolute inset-0 bg-linear-to-b from-[oklch(0.97_0.02_70)]/50 to-transparent pointer-events-none" />
+        <div className="relative">
         <h1 className="text-2xl sm:text-4xl font-semibold tracking-tight text-balance leading-snug">
           Free tools for NSW parents navigating Opportunity Class and Selective
           High School placement.
@@ -19,16 +21,17 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-3 mt-6">
           <Link
             href="/naplan-oc-estimator"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             Try the NAPLAN estimator
           </Link>
           <Link
             href="/reserve-list"
-            className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-muted/50 transition-colors"
+            className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
           >
             Check OC &amp; Selective reserve list
           </Link>
+        </div>
         </div>
       </section>
 
@@ -58,7 +61,7 @@ export default function HomePage() {
       <section className="max-w-5xl mx-auto px-4 pb-16">
         <div className="grid sm:grid-cols-2 gap-6">
           <Link href="/naplan-oc-estimator" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+            <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">
                   <div className="text-blue-600 dark:text-blue-400 mt-0.5">
@@ -88,7 +91,7 @@ export default function HomePage() {
           </Link>
 
           <Link href="/naplan-selective-estimator" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+            <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">
                   <div className="text-violet-600 dark:text-violet-400 mt-0.5">
@@ -118,7 +121,7 @@ export default function HomePage() {
           </Link>
 
           <Link href="/reserve-list/oc" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+            <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">
                   <div className="text-teal-600 dark:text-teal-400 mt-0.5">
@@ -148,7 +151,7 @@ export default function HomePage() {
           </Link>
 
           <Link href="/reserve-list/selective" className="block group">
-            <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+            <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
               <CardHeader className="pb-3">
                 <div className="flex items-start gap-4">
                   <div className="text-orange-600 dark:text-orange-400 mt-0.5">
@@ -350,19 +353,19 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/naplan-oc-estimator"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               Estimate OC schools
             </Link>
             <Link
               href="/naplan-selective-estimator"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               Estimate Selective schools
             </Link>
             <Link
               href="/reserve-list"
-              className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium hover:bg-muted/50 transition-colors"
+              className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
             >
               Check reserve list odds
             </Link>

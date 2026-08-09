@@ -19,7 +19,7 @@ export default function ReserveListPage() {
 
       <div className="grid sm:grid-cols-2 gap-5">
         <Link href="/reserve-list/selective" className="block group">
-          <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+          <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
             <CardHeader className="pb-3">
               <div className="flex items-start gap-4">
                 <div className="text-amber-600 dark:text-amber-400 mt-0.5">
@@ -47,7 +47,7 @@ export default function ReserveListPage() {
         </Link>
 
         <Link href="/reserve-list/oc" className="block group">
-          <Card className="h-full hover:shadow-md transition-shadow overflow-hidden">
+          <Card className="h-full shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
             <CardHeader className="pb-3">
               <div className="flex items-start gap-4">
                 <div className="text-emerald-600 dark:text-emerald-400 mt-0.5">
