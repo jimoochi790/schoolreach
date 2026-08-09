@@ -22,6 +22,7 @@ const NAV_GROUPS = [
     items: [
       { href: "/reserve-list/selective", label: "Selective Schools" },
       { href: "/reserve-list/oc", label: "Opportunity Classes" },
+      { href: "/offer-guide", label: "Offer Strategy Guide" },
     ],
   },
 ];
