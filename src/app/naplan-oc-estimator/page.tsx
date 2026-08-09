@@ -27,13 +27,13 @@ export default function NaplanOCPage() {
             Year 3 NAPLAN to OC Estimator
           </h1>
           <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-            Drag the dots on each subject bar to match your child's Year 3
-            NAPLAN bands. We'll estimate which of the 88 NSW Opportunity
+            Drag the dots on each subject bar to match your child&apos;s Year 3
+            NAPLAN bands. We&apos;ll estimate which of the 88 NSW Opportunity
             Class schools are realistic for Year 5 entry, sorted into Stretch,
             Target, and Safe tiers.
           </p>
           <p className="text-xs text-muted-foreground/50 mt-3">
-            Not sure what NAPLAN bands mean? Check your child's NAPLAN
+            Not sure what NAPLAN bands mean? Check your child&apos;s NAPLAN
             report — the bands are shown as Exceeding, Strong, Developing, or
             Needs additional support. Each maps to a number from 1 to 6.
           </p>

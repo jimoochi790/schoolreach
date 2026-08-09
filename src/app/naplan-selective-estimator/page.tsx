@@ -27,13 +27,13 @@ export default function NaplanSelectivePage() {
             Year 5 NAPLAN to Selective Estimator
           </h1>
           <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-            Drag the dots on each subject bar to match your child's Year 5
-            NAPLAN bands. We'll estimate which of the 48 NSW Selective High
+            Drag the dots on each subject bar to match your child&apos;s Year 5
+            NAPLAN bands. We&apos;ll estimate which of the 48 NSW Selective High
             Schools are within reach for Year 7 entry, sorted into Stretch,
             Target, and Safe tiers.
           </p>
           <p className="text-xs text-muted-foreground/50 mt-3">
-            Not sure what NAPLAN bands mean? Check your child's NAPLAN
+            Not sure what NAPLAN bands mean? Check your child&apos;s NAPLAN
             report — the bands are shown as Exceeding, Strong, Developing, or
             Needs additional support. For Year 5, bands range from 3 to 8.
           </p>

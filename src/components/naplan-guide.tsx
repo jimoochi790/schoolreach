@@ -4,25 +4,39 @@ import selectiveSchools from "@/data/selective-schools.json";
 type Year = "year3" | "year5";
 type Locale = "en" | "zh";
 
-function topSchools(data: any[], n: number) {
-  return data
-    .filter((s: any) => s.maxEstScore)
-    .sort((a: any, b: any) => (b.maxEstScore || 0) - (a.maxEstScore || 0))
-    .slice(0, n)
-    .map((s: any) => ({ name: s.name, suburb: s.suburb, score: s.maxEstScore }));
+interface SchoolEntry { name: string; suburb: string; maxEstScore?: number | null; }
+
+interface TopSchool { name: string; suburb: string; score: number; }
+interface ScoreRange { min: number; max: number; count: number; }
+
+interface FaqItem { q: string; a: string; }
+interface PageContent {
+  title: string; subtitle: string; howTitle: string;
+  howP1: string; howP2: string; howP3: string;
+  scoresTitle: string; scoresP1: string; scoresCols: string[];
+  rangeNote: string; bandsTitle: string; bandsP1: string;
+  bandLabels: string[]; faqTitle: string; faqs: FaqItem[];
 }
 
-function scoreRange(data: any[]) {
-  const scores = data.filter((s: any) => s.maxEstScore).map((s: any) => s.maxEstScore as number);
+function topSchools(data: SchoolEntry[], n: number): TopSchool[] {
+  return data
+    .filter((s) => s.maxEstScore)
+    .sort((a, b) => (b.maxEstScore || 0) - (a.maxEstScore || 0))
+    .slice(0, n)
+    .map((s) => ({ name: s.name, suburb: s.suburb, score: s.maxEstScore as number }));
+}
+
+function scoreRange(data: SchoolEntry[]): ScoreRange {
+  const scores = data.filter((s) => s.maxEstScore).map((s) => s.maxEstScore as number);
   if (!scores.length) return { min: 0, max: 0, count: 0 };
   return { min: Math.min(...scores), max: Math.max(...scores), count: scores.length };
 }
 
 function buildContent(
-  isOC: boolean, range: ReturnType<typeof scoreRange>, top5: ReturnType<typeof topSchools>,
+  isOC: boolean, range: ScoreRange, top5: TopSchool[],
   testName: string, naplanYear: string, total: number
-) {
-  const en: Record<string, any> = {
+): { en: PageContent; zh: PageContent } {
+  const en: PageContent = {
     title: `How NAPLAN Relates to ${isOC ? "OC" : "Selective"} School Placement`,
     subtitle: `A clear explanation of how ${naplanYear} NAPLAN results connect to ${isOC ? "Opportunity Class" : "Selective High School"} entry, what scores matter, and what parents should know.`,
     howTitle: "What is NAPLAN and how does it relate to placement?",
@@ -65,7 +79,7 @@ function buildContent(
     ],
   };
 
-  const zh: Record<string, any> = {
+  const zh: PageContent = {
     title: `NAPLAN 与${isOC ? "OC 班" : "精英中学"}入学的关系`,
     subtitle: `清晰解释${naplanYear} NAPLAN 成绩如何与${isOC ? "英才班" : "精英中学"}入学相关联。`,
     howTitle: "什么是 NAPLAN？与入学有什么关系？",
@@ -120,12 +134,12 @@ export default function NaplanGuide({ year, locale = "en" }: { year: Year; local
   const naplanYear = isOC ? "Year 3" : "Year 5";
 
   const { en, zh } = buildContent(isOC, range, top5, testName, naplanYear, total);
-  const txt: Record<string, any> = locale === "zh" ? zh : en;
+  const txt: PageContent = locale === "zh" ? zh : en;
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: txt.faqs.map((f: any) => ({
+    mainEntity: txt.faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -189,7 +203,7 @@ export default function NaplanGuide({ year, locale = "en" }: { year: Year; local
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">{txt.faqTitle}</h2>
         <div className="space-y-4">
-          {txt.faqs.map((faq: any) => (
+          {txt.faqs.map((faq) => (
             <div key={faq.q} className="p-5 rounded-xl bg-muted/20 border border-border/40">
               <h3 className="font-medium text-base mb-2">{faq.q}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
