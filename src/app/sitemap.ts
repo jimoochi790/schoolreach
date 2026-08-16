@@ -12,6 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/reserve-list/oc`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/reserve-list/selective`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${baseUrl}/offer-guide`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${baseUrl}/articles`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/articles/oc-reserve-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/articles/selective-reserve-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/articles/accept-offer-or-wait`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/articles/reserve-bands-explained`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/privacy`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     // Chinese locale
@@ -22,6 +27,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/zh/reserve-list/oc`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/zh/reserve-list/selective`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${baseUrl}/zh/offer-guide`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/zh/articles`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/zh/articles/oc-reserve-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/zh/articles/selective-reserve-strategy`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/zh/articles/accept-offer-or-wait`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/zh/articles/reserve-bands-explained`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/zh/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 }

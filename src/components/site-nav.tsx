@@ -117,6 +117,7 @@ export default function SiteNav() {
     })), [localize]);
 
   const aboutHref = localize("/about");
+  const articlesHref = localize("/articles");
   const switchHref = isZh ? pathname.replace("/zh", "") : "/zh" + (pathname === "/" ? "" : pathname);
   const switchLabel = isZh ? "EN" : "中文";
 
@@ -129,6 +130,7 @@ export default function SiteNav() {
       pathname={pathname}
       localizedGroups={localizedGroups}
       aboutHref={aboutHref}
+      articlesHref={articlesHref}
       switchHref={switchHref}
       switchLabel={switchLabel}
       isZh={isZh}
@@ -142,6 +144,7 @@ function SiteNavInner({
   pathname,
   localizedGroups,
   aboutHref,
+  articlesHref,
   switchHref,
   switchLabel,
   isZh,
@@ -151,6 +154,7 @@ function SiteNavInner({
   pathname: string;
   localizedGroups: typeof NAV_GROUPS;
   aboutHref: string;
+  articlesHref: string;
   switchHref: string;
   switchLabel: string;
   isZh: boolean;
@@ -164,6 +168,9 @@ function SiteNavInner({
         {localizedGroups.map(group => (
           <NavDropdown key={group.label} label={group.label} items={group.items} />
         ))}
+        <Link href={articlesHref} className="text-muted-foreground hover:text-foreground transition-colors px-2">
+          Articles
+        </Link>
         <Link href={aboutHref} className="text-muted-foreground hover:text-foreground transition-colors px-2">
           About
         </Link>
@@ -220,6 +227,16 @@ function SiteNavInner({
               <p className="text-[10px] font-semibold tracking-widest uppercase text-muted-foreground/50 mb-3">
                 More
               </p>
+              <Link
+                href={articlesHref}
+                className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                  pathname.startsWith(articlesHref)
+                    ? "bg-primary/10 text-primary font-medium"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                }`}
+              >
+                Articles
+              </Link>
               <Link
                 href={aboutHref}
                 className={`block px-3 py-2.5 rounded-lg text-sm transition-colors ${
