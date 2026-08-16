@@ -121,7 +121,7 @@ export default function ArticleShell({
           <h2 className="text-lg font-semibold mb-2">{cta.text}</h2>
           <Link
             href={cta.href}
-            className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 mt-3"
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 mt-3"
           >
             {cta.label}
           </Link>

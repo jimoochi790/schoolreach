@@ -7,7 +7,7 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="max-w-3xl mx-auto px-4 pt-20 pb-8 sm:pt-24 sm:pb-10 relative">
-        <div className="absolute inset-0 bg-linear-to-b from-[oklch(0.97_0.02_70)]/50 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-[oklch(0.92_0.05_235)]/40 to-transparent pointer-events-none" />
         <div className="relative">
         <h1 className="text-2xl sm:text-4xl font-semibold tracking-tight text-balance leading-snug">
           Free tools for NSW parents navigating Opportunity Class and Selective
@@ -21,13 +21,13 @@ export default function HomePage() {
         <div className="flex flex-wrap gap-3 mt-6">
           <Link
             href="/naplan-oc-estimator"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
             Try the NAPLAN estimator
           </Link>
           <Link
             href="/reserve-list"
-            className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
           >
             Check OC &amp; Selective reserve list
           </Link>
@@ -353,19 +353,19 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/naplan-oc-estimator"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               Estimate OC schools
             </Link>
             <Link
               href="/naplan-selective-estimator"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               Estimate Selective schools
             </Link>
             <Link
               href="/reserve-list"
-              className="inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium shadow-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-200"
             >
               Check reserve list odds
             </Link>
